@@ -15,14 +15,14 @@ const AddProduct = () => {
       alert("Please select a product image");
       return;
     }
-    console.log("💾 brochureFile:", brochureFile);
+    // console.log("💾 brochureFile:", brochureFile);
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
     formData.append("image", imageFile);
     if (brochureFile) {
       formData.append("brochure", brochureFile);
-      console.log("brochure file =>", brochureFile);
+      // console.log("brochure file =>", brochureFile);
     }
 
     try {

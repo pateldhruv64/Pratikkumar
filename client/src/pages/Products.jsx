@@ -139,7 +139,9 @@ const Products = () => {
               className="bg-white rounded-2xl shadow-md p-4 sm:p-6 hover:shadow-xl transition"
             >
               <img
-                src={`http://localhost:5000${product.image}`}
+                // src={`http://localhost:5000${product.image}`}
+                src={`${import.meta.env.VITE_API_URL}${product.image}`}
+
                 alt={product.name}
                 className="w-full h-48 object-contain mb-4"
               />
@@ -164,7 +166,9 @@ const Products = () => {
               {/* product pdf mate no new code */}
               {product.brochure && (
                 <a
-                  href={`http://localhost:5000${product.brochure}`}
+                  // href={`http://localhost:5000${product.brochure}`}
+                  href={`${import.meta.env.VITE_API_URL}${product.brochure}`}
+
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm"

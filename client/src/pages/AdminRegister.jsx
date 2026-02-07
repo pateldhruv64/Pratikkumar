@@ -14,7 +14,7 @@ const AdminRegister = () => {
     email: "",
     password: "",
   });
-  });
+  
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");

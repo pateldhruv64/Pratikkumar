@@ -140,7 +140,7 @@ const Contact = () => {
 <div>
             <label className="block mb-1 font-medium">Mobile Number</label>
             <input
-              type="number"
+              type="tel"
               name="number"
               value={form.number}
               onChange={handleChange}

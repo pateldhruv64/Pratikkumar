@@ -1,7 +1,7 @@
 // src/services/productApi.js
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const API = axios.create({  baseURL: `${import.meta.env.VITE_API_URL}/api` });
 
 export const getAllProducts = () => API.get('/products');
 export const getProductById = (id) => API.get(`/products/${id}`);
