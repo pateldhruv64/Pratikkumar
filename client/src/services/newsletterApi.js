@@ -1,0 +1,7 @@
+// src/services/newsletterApi.js
+import axios from 'axios';
+
+const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+
+export const subscribeNewsletter = (email) =>
+  API.post('/newsletter/subscribe', { email });
