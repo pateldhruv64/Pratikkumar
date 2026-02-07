@@ -51,7 +51,8 @@ const Home = () => {
             >
               <Link to="/products" className="block">
                 <img
-                  src={`http://localhost:5000${product.image}`}
+                  src={`${import.meta.env.VITE_API_URL}${product.image}`}
+
                   alt={product.name}
                   className="w-full h-40 sm:h-44 object-contain mb-3"
                 />
@@ -131,7 +132,8 @@ const Home = () => {
           Download Our Product Catalog
         </h2>
        <a
-  href="http://localhost:5000/assets/catalog.pdf"
+ href={`${import.meta.env.VITE_API_URL}/assets/catalog.pdf`}
+
    target="_blank"
     rel="noopener noreferrer"
   download
