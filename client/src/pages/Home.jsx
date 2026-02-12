@@ -32,14 +32,14 @@ const Home = () => {
           className="w-full h-[250px] sm:h-[300px] md:h-[400px] object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
-    <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-extrabold leading-tight max-w-4xl">
-      Welcome to <span className="text-red-600">Crejap </span>
-      <span className="text-gray-300">Pharma</span>
-    </h1>
-  </div>
+          <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-extrabold leading-tight max-w-4xl">
+            Welcome to <span className="text-red-600">Crejap </span>
+            <span className="text-gray-300">Pharma</span>
+          </h1>
+        </div>
       </section>
 
-     
+
 
       {/* Product Highlight Section */}
       <section className="py-10 px-4 sm:px-8 md:px-16 bg-gray-100">
@@ -82,50 +82,50 @@ const Home = () => {
       {/* Mission & Vision Section */}
 
 
-{/* Why Choose Us Section */}
-{/* Why Choose Us Section */}
-<section className="py-10 px-4 sm:px-8 md:px-16 bg-gray-100">
-  <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center">Why Choose Us?</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
-    <div className="bg-white p-4 rounded shadow">
-      <h3 className="font-semibold text-lg mb-2">Quality Assurance</h3>
-      <p className="text-sm text-gray-600">We adhere to strict quality protocols and international standards.</p>
-    </div>
-    <div className="bg-white p-4 rounded shadow">
-      <h3 className="font-semibold text-lg mb-2">Wide Product Range</h3>
-      <p className="text-sm text-gray-600">We offer a diverse range of pharma formulations across all therapeutic categories.</p>
-    </div>
-    <div className="bg-white p-4 rounded shadow">
-      <h3 className="font-semibold text-lg mb-2">24x7 Support</h3>
-      <p className="text-sm text-gray-600">Our team is always available to assist your business needs.</p>
-    </div>
-    <div className="bg-white p-4 rounded shadow">
-      <h3 className="font-semibold text-lg mb-2">WHO-GMP Certified</h3>
-      <p className="text-sm text-gray-600">We follow WHO-GMP guidelines for manufacturing excellence.</p>
-    </div>
-  </div>
-</section>
+      {/* Why Choose Us Section */}
+      {/* Why Choose Us Section */}
+      <section className="py-10 px-4 sm:px-8 md:px-16 bg-gray-100">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center">Why Choose Us?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold text-lg mb-2">Quality Assurance</h3>
+            <p className="text-sm text-gray-600">We adhere to strict quality protocols and international standards.</p>
+          </div>
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold text-lg mb-2">Wide Product Range</h3>
+            <p className="text-sm text-gray-600">We offer a diverse range of pharma formulations across all therapeutic categories.</p>
+          </div>
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold text-lg mb-2">24x7 Support</h3>
+            <p className="text-sm text-gray-600">Our team is always available to assist your business needs.</p>
+          </div>
+          <div className="bg-white p-4 rounded shadow">
+            <h3 className="font-semibold text-lg mb-2">WHO-GMP Certified</h3>
+            <p className="text-sm text-gray-600">We follow WHO-GMP guidelines for manufacturing excellence.</p>
+          </div>
+        </div>
+      </section>
 
 
-{/* Testimonials Section */}
-{/* Testimonials Section */}
-<section className="py-10 px-4 sm:px-8 md:px-16 bg-white">
-  <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center">What Our Clients Say</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <div className="bg-gray-50 p-4 rounded shadow">
-      <p className="text-sm text-gray-700 mb-2">"Their product quality is outstanding and complies with all regulatory norms."</p>
-      <h4 className="font-semibold text-sm">— Dr. Desai, Ahmedabad</h4>
-    </div>
-    <div className="bg-gray-50 p-4 rounded shadow">
-      <p className="text-sm text-gray-700 mb-2">"We’ve had a consistent and reliable experience sourcing pharma supplies."</p>
-      <h4 className="font-semibold text-sm">— MedCare Distributors, Mumbai</h4>
-    </div>
-    <div className="bg-gray-50 p-4 rounded shadow">
-      <p className="text-sm text-gray-700 mb-2">"Highly professional team with great customer understanding and support."</p>
-      <h4 className="font-semibold text-sm">— Dr. A. Sharma, Bengaluru</h4>
-    </div>
-  </div>
-</section>
+      {/* Testimonials Section */}
+      {/* Testimonials Section */}
+      <section className="py-10 px-4 sm:px-8 md:px-16 bg-white">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center">What Our Clients Say</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="bg-gray-50 p-4 rounded shadow">
+            <p className="text-sm text-gray-700 mb-2">"Their product quality is outstanding and complies with all regulatory norms."</p>
+            <h4 className="font-semibold text-sm">— Dr. Desai, Ahmedabad</h4>
+          </div>
+          <div className="bg-gray-50 p-4 rounded shadow">
+            <p className="text-sm text-gray-700 mb-2">"We’ve had a consistent and reliable experience sourcing pharma supplies."</p>
+            <h4 className="font-semibold text-sm">— MedCare Distributors, Mumbai</h4>
+          </div>
+          <div className="bg-gray-50 p-4 rounded shadow">
+            <p className="text-sm text-gray-700 mb-2">"Highly professional team with great customer understanding and support."</p>
+            <h4 className="font-semibold text-sm">— Dr. A. Sharma, Bengaluru</h4>
+          </div>
+        </div>
+      </section>
 
 
       {/* Call to Action */}
@@ -133,20 +133,20 @@ const Home = () => {
         <h2 className="text-xl sm:text-2xl font-semibold mb-4">
           Download Our Product Catalog
         </h2>
-       <a
- href={`${import.meta.env.VITE_API_URL}/assets/catalog.pdf`}
+        <a
+          href={`${import.meta.env.VITE_API_URL}/assets/catalog.pdf`}
 
-   target="_blank"
-    rel="noopener noreferrer"
-  download
-  className="inline-block px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm sm:text-base"
->
-  Download Now
-</a>
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          className="inline-block px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm sm:text-base"
+        >
+          Download Now
+        </a>
 
       </section>
 
-      
+
     </div>
   );
 };
