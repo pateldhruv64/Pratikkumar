@@ -33,8 +33,8 @@ const Home = () => {
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-4">
     <h1 className="text-white text-xl sm:text-3xl md:text-5xl font-extrabold leading-tight max-w-4xl">
-      Welcome to <span className="text-red-600">DhruvCure </span>
-      <span className="text-gray-300">Pharmaceuticals</span>
+      Welcome to <span className="text-red-600">Crejap </span>
+      <span className="text-gray-300">Pharma</span>
     </h1>
   </div>
       </section>
