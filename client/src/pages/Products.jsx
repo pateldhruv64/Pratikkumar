@@ -140,7 +140,11 @@ const Products = () => {
             >
               <img
                 // src={`http://localhost:5000${product.image}`}
-                src={`${import.meta.env.VITE_API_URL}${product.image}`}
+                src={
+                  product.image.startsWith('http')
+                    ? product.image
+                    : `${import.meta.env.VITE_API_URL}${product.image}`
+                }
 
                 alt={product.name}
                 className="w-full h-48 object-contain mb-4"
@@ -167,7 +171,11 @@ const Products = () => {
               {product.brochure && (
                 <a
                   // href={`http://localhost:5000${product.brochure}`}
-                  href={`${import.meta.env.VITE_API_URL}${product.brochure}`}
+                  href={
+                    product.brochure.startsWith('http')
+                      ? product.brochure
+                      : `${import.meta.env.VITE_API_URL}${product.brochure}`
+                  }
 
                   target="_blank"
                   rel="noopener noreferrer"
