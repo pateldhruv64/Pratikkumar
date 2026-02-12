@@ -26,7 +26,7 @@ const Footer = () => {
             {/* Company Info */}
             <div className="md:w-1/2">
               <h3 className="text-lg font-bold mb-2">
-                DhruvCure Pharmaceuticals Pvt. Ltd.
+                Crejap Pharma Pvt. Ltd.
               </h3>
               <p className="text-sm text-gray-300">
                 Caring for Better Health. We deliver trusted pharma products to
@@ -48,7 +48,7 @@ const Footer = () => {
           <hr className="my-6 border-gray-600" />
 
           <div className="text-center text-sm text-gray-400">
-            © {new Date().getFullYear()} DhruvCure Pharmaceuticals Pvt. Ltd..
+            © {new Date().getFullYear()} Crejap Pharma Pvt. Ltd..
             All rights reserved.
           </div>
           <a
