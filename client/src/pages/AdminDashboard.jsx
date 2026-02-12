@@ -19,14 +19,14 @@ const AdminDashboard = () => {
         console.error('❌ Dashboard error:', err.response?.data?.message);
       }
       const adminName = sessionStorage.getItem('adminName');
-  const lastLogin = sessionStorage.getItem('lastLogin');
+      const lastLogin = sessionStorage.getItem('lastLogin');
 
-  if (adminName) {
-    setDashboardInfo({ adminName, lastLogin });
-  }
+      if (adminName) {
+        setDashboardInfo({ adminName, lastLogin });
+      }
     };
 
-    
+
 
     const fetchProducts = async () => {
       try {
@@ -70,35 +70,35 @@ const AdminDashboard = () => {
     }
   };
 
- // ✅ Handle catalog PDF upload
+  // ✅ Handle catalog PDF upload
   const handleCatalogUpload = async (e) => {
-  e.preventDefault();
-  if (!catalogPdf) return alert('Please select a PDF file first');
+    e.preventDefault();
+    if (!catalogPdf) return alert('Please select a PDF file first');
 
-  const formData = new FormData();
-  formData.append('catalog', catalogPdf); // ✅ Must match 'upload.single("catalog")'
+    const formData = new FormData();
+    formData.append('catalog', catalogPdf); // ✅ Must match 'upload.single("catalog")'
 
-  try {
-    await axios.post('/api/admin/upload-catalog', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    alert('✅ Catalog PDF uploaded successfully!');
-    setCatalogPdf(null);
-  } catch (err) {
-    alert('❌ Failed to upload catalog PDF');
-    console.error(err);
-  }
-};
+    try {
+      await axios.post('/api/admin/upload-catalog', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert('✅ Catalog PDF uploaded successfully!');
+      setCatalogPdf(null);
+    } catch (err) {
+      alert('❌ Failed to upload catalog PDF');
+      console.error(err);
+    }
+  };
 
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8 sm:px-6">
       <div className="max-w-6xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-md">
         <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-blue-600 text-center">
-  Admin Dashboard
-</h1>
+          Admin Dashboard
+        </h1>
 
 
 
@@ -194,7 +194,11 @@ const AdminDashboard = () => {
                   <td className="border px-4 py-2">{product.name}</td>
                   <td className="border px-4 py-2">
                     <img
-                      src={product.image}
+                      src={
+                        product.image.startsWith('http')
+                          ? product.image
+                          : `${import.meta.env.VITE_API_URL}${product.image}`
+                      }
                       alt={product.name}
                       className="w-30 h-16 object-contain"
                     />
@@ -225,40 +229,40 @@ const AdminDashboard = () => {
             </tbody>
           </table>
         </div>
-         {/* ✅ Catalog Upload Form */}
-       {/* ✅ Catalog Upload Form */}
-{/* ✅ Catalog Upload Form */}
-<div className="mt-10 border-t pt-6">
-  <h2 className="text-lg font-semibold mb-4 text-gray-700 text-center">
-    📄 Upload Our Product Catalog (PDF)
-  </h2>
+        {/* ✅ Catalog Upload Form */}
+        {/* ✅ Catalog Upload Form */}
+        {/* ✅ Catalog Upload Form */}
+        <div className="mt-10 border-t pt-6">
+          <h2 className="text-lg font-semibold mb-4 text-gray-700 text-center">
+            📄 Upload Our Product Catalog (PDF)
+          </h2>
 
-  <form
-    onSubmit={handleCatalogUpload}
-    className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-center"
-  >
-    <div className="w-full sm:w-auto">
-      <input
-        type="file"
-        accept="application/pdf"
-        onChange={(e) => setCatalogPdf(e.target.files[0])}
-        className="px-4 py-2 border rounded w-full sm:w-[300px]"
-        required
-      />
-      {catalogPdf && (
-        <p className="mt-1 text-xs text-gray-500 text-center sm:text-left truncate">
-          📎 Selected: {catalogPdf.name}
-        </p>
-      )}
-    </div>
-    <button
-      type="submit"
-      className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 w-full sm:w-auto"
-    >
-      Upload Catalog PDF
-    </button>
-  </form>
-</div>
+          <form
+            onSubmit={handleCatalogUpload}
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-center"
+          >
+            <div className="w-full sm:w-auto">
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => setCatalogPdf(e.target.files[0])}
+                className="px-4 py-2 border rounded w-full sm:w-[300px]"
+                required
+              />
+              {catalogPdf && (
+                <p className="mt-1 text-xs text-gray-500 text-center sm:text-left truncate">
+                  📎 Selected: {catalogPdf.name}
+                </p>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 w-full sm:w-auto"
+            >
+              Upload Catalog PDF
+            </button>
+          </form>
+        </div>
 
       </div>
     </div>

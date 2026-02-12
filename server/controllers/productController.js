@@ -24,35 +24,38 @@ export const getProductById = async (req, res) => {
 // ✅ CREATE new product (with image + brochure)
 export const createProduct = async (req, res) => {
   try {
-    // console.log('📦 Files received at backend:', req.files);
     const { name, description } = req.body;
 
-    let image = '';
-    let brochure = '';
+    let image = "";
+    let brochure = "";
 
-    // 📸 Handle uploaded image
+    // 📸 Cloudinary image URL
     if (req.files?.image) {
-      image = `/uploads/${req.files.image[0].filename}`;
+      image = req.files.image[0].path;   // ✅ Changed
+      // console.log('Cloudinary Image URL:', image);
     } else {
       return res.status(400).json({ message: "Image file is required" });
     }
 
-    // 📄 Handle uploaded brochure (optional)
+    // 📄 Cloudinary brochure URL
     if (req.files?.brochure) {
-      brochure = `/uploads/${req.files.brochure[0].filename}`;
+      brochure = req.files.brochure[0].path;   // ✅ Changed
     }
 
     const newProduct = new Product({ name, description, image, brochure });
     await newProduct.save();
 
-    res.status(201).json({ message: "Product added successfully", product: newProduct });
+    res.status(201).json({
+      message: "Product added successfully",
+      product: newProduct,
+    });
   } catch (error) {
     console.error("❌ Error adding product:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// ✅ UPDATE product (with optional new image + brochure)
+// ✅ UPDATE product
 export const updateProduct = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -62,16 +65,16 @@ export const updateProduct = async (req, res) => {
       description,
     };
 
-    // 📸 Handle new image upload
+    // 📸 New image upload
     if (req.files?.image) {
-      updateFields.image = `/uploads/${req.files.image[0].filename}`;
+      updateFields.image = req.files.image[0].path;   // ✅ Changed
     } else if (req.body.image) {
       updateFields.image = req.body.image;
     }
 
-    // 📄 Handle new brochure upload
+    // 📄 New brochure upload
     if (req.files?.brochure) {
-      updateFields.brochure = `/uploads/${req.files.brochure[0].filename}`;
+      updateFields.brochure = req.files.brochure[0].path;   // ✅ Changed
     } else if (req.body.brochure) {
       updateFields.brochure = req.body.brochure;
     }
@@ -82,9 +85,13 @@ export const updateProduct = async (req, res) => {
       { new: true }
     );
 
-    if (!updatedProduct) return res.status(404).json({ message: "Product not found" });
+    if (!updatedProduct)
+      return res.status(404).json({ message: "Product not found" });
 
-    res.status(200).json({ message: "Product updated", product: updatedProduct });
+    res.status(200).json({
+      message: "Product updated",
+      product: updatedProduct,
+    });
   } catch (error) {
     console.error("❌ Error updating product:", error);
     res.status(500).json({ message: "Server error" });
@@ -95,7 +102,9 @@ export const updateProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
   try {
     const deletedProduct = await Product.findByIdAndDelete(req.params.id);
-    if (!deletedProduct) return res.status(404).json({ message: "Product not found" });
+    if (!deletedProduct)
+      return res.status(404).json({ message: "Product not found" });
+
     res.status(200).json({ message: "Product deleted" });
   } catch (error) {
     res.status(500).json({ message: "Server error" });

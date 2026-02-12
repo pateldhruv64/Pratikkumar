@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import path from 'path'; // ✅ Needed for static path
@@ -20,7 +21,7 @@ app.use(express.json()); // Parse JSON
 
 // ✅ Serve uploaded images statically
 const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, 'server/uploads')));
+// app.use('/uploads', express.static(path.join(__dirname, 'server/uploads'))); kem ke cloudly use karyu aetle delet
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 // Routes
 app.use('/api/admin', adminRoutes);
