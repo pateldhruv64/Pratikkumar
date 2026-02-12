@@ -11,7 +11,7 @@ const Home = () => {
     const fetchHomeProducts = async () => {
       try {
         const res = await axios.get("/api/products");
-        // const res = await axios.get("/products");
+        //const res = await axios.get("/products");
 
         setProducts(res.data.slice(0, 3)); // ✅ Show only 3 products
       } catch (error) {
