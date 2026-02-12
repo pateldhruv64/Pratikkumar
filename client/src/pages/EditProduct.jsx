@@ -96,7 +96,11 @@ const EditProduct = () => {
             <div>
               <p className="mb-1">Current Image:</p>
               <img
-                src={`${import.meta.env.VITE_API_URL}${form.image}`}
+                src={
+                  form.image.startsWith("http")
+                    ? form.image
+                    : `${import.meta.env.VITE_API_URL}${form.image}`
+                }
 
                 alt="Preview"
                 className="h-24 object-contain mb-2"
@@ -121,7 +125,11 @@ const EditProduct = () => {
               <p className="mb-1">Current Brochure:</p>
               <a
                 // href={`http://localhost:5000${form.brochure}`}
-                href={`${import.meta.env.VITE_API_URL}${form.brochure}`}
+                href={
+                  form.brochure.startsWith("http")
+                    ? form.brochure
+                    : `${import.meta.env.VITE_API_URL}${form.brochure}`
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 underline"

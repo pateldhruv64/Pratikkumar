@@ -53,7 +53,11 @@ const Home = () => {
             >
               <Link to="/products" className="block">
                 <img
-                  src={`${import.meta.env.VITE_API_URL}${product.image}`}
+                  src={
+                    product.image.startsWith("http")
+                      ? product.image
+                      : `${import.meta.env.VITE_API_URL}${product.image}`
+                  }
 
                   alt={product.name}
                   className="w-full h-40 sm:h-44 object-contain mb-3"
