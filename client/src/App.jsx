@@ -1,27 +1,57 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ProtectedRoute from "./components/ProtectedRoute"; // ✅ match name
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Products from "./pages/Products";
-import Contact from "./pages/Contact";
-import AdminLogin from "./pages/AdminLogin";
-import AdminDashboard from "./pages/AdminDashboard";
-import AddProduct from "./pages/AddProduct";
-import EditProduct from "./pages/EditProduct";
 import WhatsAppButton from "./components/WhatsAppButton";
-import TermsPrivacy from "./pages/TermsPrivacy";
-import AdminNewsletterList from "./pages/AdminNewsletterList";
-import AdminContactList from "./pages/AdminContactList";
+import ScrollToTop from "./components/ScrollToTop";
+import LoadingSpinner from "./components/LoadingSpinner";
+import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
+
+// Lazy loaded pages for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Products = lazy(() => import("./pages/Products"));
+const Contact = lazy(() => import("./pages/Contact"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AddProduct = lazy(() => import("./pages/AddProduct"));
+const EditProduct = lazy(() => import("./pages/EditProduct"));
+const TermsPrivacy = lazy(() => import("./pages/TermsPrivacy"));
+const AdminNewsletterList = lazy(() => import("./pages/AdminNewsletterList"));
+const AdminContactList = lazy(() => import("./pages/AdminContactList"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AdminRegister = lazy(() => import("./pages/AdminRegister"));
+
+import Breadcrumbs from "./components/Breadcrumbs";
+
+// Layout component that conditionally shows Footer
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  return (
+    <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+      <Navbar />
+      {/* {!isAdminRoute && <Breadcrumbs />} */}
+      <main className="flex-grow">
+        <Suspense fallback={<LoadingSpinner />}>
+          {children}
+        </Suspense>
+        <WhatsAppButton />
+        <ScrollToTop />
+      </main>
+      {!isAdminRoute && <Footer />}
+    </div>
+  );
+};
+
 const App = () => {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen bg-gray-100">
-        <Navbar />
-
-        <main className="flex-grow">
+    <HelmetProvider>
+      <Router>
+        <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -37,7 +67,6 @@ const App = () => {
                 </ProtectedAdminRoute>
               }
             />
-
             <Route
               path="/admin/contacts"
               element={
@@ -46,7 +75,6 @@ const App = () => {
                 </ProtectedAdminRoute>
               }
             />
-
             <Route
               path="/admin/dashboard"
               element={
@@ -71,13 +99,20 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+            {/* 404 catch-all */}
+            <Route
+              path="/admin/register"
+              element={
+                <ProtectedRoute>
+                  <AdminRegister />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          <WhatsAppButton />
-        </main>
-
-        <Footer />
-      </div>
-    </Router>
+        </Layout>
+      </Router>
+    </HelmetProvider>
   );
 };
 

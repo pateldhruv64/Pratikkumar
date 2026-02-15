@@ -26,8 +26,8 @@ const AdminLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-   
-   
+
+
     try {
       const res = await axios.post('/api/admin/login', form);
       const { token, admin } = res.data;
@@ -35,12 +35,12 @@ const AdminLogin = () => {
       // ✅ Store token securely in sessionStorage
       sessionStorage.setItem('adminToken', token);
       sessionStorage.setItem('adminName', admin.name);
-sessionStorage.setItem('lastLogin', new Date().toLocaleString());
+      sessionStorage.setItem('lastLogin', new Date().toLocaleString());
       alert('✅ Login successful!');
 
       navigate('/admin/dashboard');
 
-       
+
     } catch (err) {
       const errMsg = err.response?.data?.message || 'Login failed';
       setError(errMsg);
@@ -48,17 +48,17 @@ sessionStorage.setItem('lastLogin', new Date().toLocaleString());
 
     setForm({ email: '', password: '' });
   };
-  
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Admin Login</h2>
 
-        {error && <p className="text-red-600 mb-4">{error}</p>}
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4 transition-colors duration-300">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg transition-colors duration-300">
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600 dark:text-blue-400">Admin Login</h2>
+
+        {error && <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Email
             </label>
             <input
@@ -68,12 +68,12 @@ sessionStorage.setItem('lastLogin', new Date().toLocaleString());
               value={form.email}
               onChange={handleChange}
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Password
             </label>
             <input
@@ -83,7 +83,7 @@ sessionStorage.setItem('lastLogin', new Date().toLocaleString());
               value={form.password}
               onChange={handleChange}
               required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
             />
           </div>
 
@@ -93,7 +93,7 @@ sessionStorage.setItem('lastLogin', new Date().toLocaleString());
           >
             Login
           </button>
-          
+
         </form>
       </div>
     </div>

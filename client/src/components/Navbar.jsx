@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const location = useLocation();
@@ -35,11 +36,10 @@ const Navbar = () => {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        hasScrolled
-          ? "bg-white/50 backdrop-blur-md shadow-sm"
-          : "bg-gray-100 shadow-md"
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${hasScrolled
+        ? "bg-white/50 backdrop-blur-md shadow-sm"
+        : "bg-gray-100 shadow-md"
+        }`}
     >
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo with hover effect */}
@@ -66,29 +66,26 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <nav
-          className={`${
-            isMobileView
-              ? isOpen
-                ? "block absolute top-16 left-0 w-full bg-white shadow-md"
-                : "hidden"
-              : "flex"
-          } md:flex md:items-center md:space-x-6`}
+          className={`${isMobileView
+            ? isOpen
+              ? "block absolute top-16 left-0 w-full bg-white shadow-md"
+              : "hidden"
+            : "flex"
+            } md:flex md:items-center md:space-x-6`}
         >
           <div
-            className={`${
-              isMobileView
-                ? "flex flex-col items-start p-4 space-y-2"
-                : "flex space-x-6"
-            }`}
+            className={`${isMobileView
+              ? "flex flex-col items-start p-4 space-y-2"
+              : "flex space-x-6"
+              }`}
           >
             <Link
               to="/"
               onClick={closeMenu}
-              className={`font-medium ${
-                location.pathname === "/"
-                  ? "text-blue-600"
-                  : "text-gray-700 hover:text-blue-600"
-              }`}
+              className={`font-medium ${location.pathname === "/"
+                ? "text-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+                }`}
             >
               Home
             </Link>
@@ -96,11 +93,10 @@ const Navbar = () => {
             <Link
               to="/products"
               onClick={closeMenu}
-              className={`font-medium ${
-                location.pathname === "/products"
-                  ? "text-blue-600"
-                  : "text-gray-700 hover:text-blue-600"
-              }`}
+              className={`font-medium ${location.pathname === "/products"
+                ? "text-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+                }`}
             >
               Products
             </Link>
@@ -108,11 +104,10 @@ const Navbar = () => {
             <Link
               to="/about"
               onClick={closeMenu}
-              className={`font-medium ${
-                location.pathname === "/about"
-                  ? "text-blue-600"
-                  : "text-gray-700 hover:text-blue-600"
-              }`}
+              className={`font-medium ${location.pathname === "/about"
+                ? "text-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+                }`}
             >
               About
             </Link>
@@ -120,13 +115,27 @@ const Navbar = () => {
             <Link
               to="/contact"
               onClick={closeMenu}
-              className={`font-medium ${
-                location.pathname === "/contact"
-                  ? "text-blue-600"
-                  : "text-gray-700 hover:text-blue-600"
-              }`}
+              className={`font-medium ${location.pathname === "/contact"
+                ? "text-blue-600"
+                : "text-gray-700 hover:text-blue-600"
+                }`}
             >
               Contact
+            </Link>
+
+            <div className="pt-2 md:hidden">
+              <ThemeToggle />
+            </div>
+          </div>
+
+          {/* Call to Action Button (Desktop) */}
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
+            <Link
+              to="/contact"
+              className="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            >
+              Get Quote
             </Link>
           </div>
         </nav>

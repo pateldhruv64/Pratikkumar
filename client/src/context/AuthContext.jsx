@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ isAdminLoggedIn, setIsAdminLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

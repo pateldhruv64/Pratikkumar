@@ -1,8 +1,14 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 const TermsPrivacy = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 text-gray-800 bg-gray-100">
+      <Helmet>
+        <title>Terms & Privacy Policy | Crejap Pharma Pvt. Ltd.</title>
+        <meta name="description" content="Read the Terms of Use and Privacy Policy for the Crejap Pharma website." />
+      </Helmet>
+
       <h1 className="text-3xl font-bold mb-6 text-center">
         Terms & Privacy Policy
       </h1>
