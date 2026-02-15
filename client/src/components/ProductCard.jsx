@@ -57,7 +57,7 @@ const ProductCard = ({ product }) => {
                     )}
 
                     <a
-                        href={`https://wa.me/919876543210?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
+                        href={`https://wa.me/916353159657?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors shadow-md hover:shadow-lg text-sm font-medium"
