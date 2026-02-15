@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import axios from '../services/axios';
+import ProductCard from '../components/ProductCard';
 
 const CATEGORIES = [
   "All",
@@ -85,58 +86,7 @@ const Products = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product) => (
-            <div
-              key={product._id}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-4 sm:p-6 hover:shadow-xl transition border border-transparent dark:border-gray-700"
-            >
-              <img
-                src={
-                  product.image.startsWith('http')
-                    ? product.image
-                    : `${import.meta.env.VITE_API_URL}${product.image}`
-                }
-                alt={product.name}
-                loading="lazy"
-                className="w-full h-48 object-contain mb-4 bg-white rounded p-2"
-              />
-
-              {product.category && (
-                <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 text-xs px-2 py-1 rounded mb-2">
-                  {product.category}
-                </span>
-              )}
-
-              <h3 className="text-lg sm:text-xl font-semibold mb-2 dark:text-white">
-                {product.name}
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                {product.description}
-              </p>
-
-              {product.brochure && (
-                <a
-                  href={
-                    product.brochure.startsWith('http')
-                      ? product.brochure
-                      : `${import.meta.env.VITE_API_URL}${product.brochure}`
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm mb-2 sm:mb-0 sm:mr-2"
-                >
-                  View Brochure
-                </a>
-              )}
-
-              <a
-                href={`https://wa.me/919876543210?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm"
-              >
-                Enquire Now
-              </a>
-            </div>
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
       )}
