@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo0001.webp";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
@@ -51,6 +51,9 @@ const Navbar = () => {
             src={logo}
             alt="Pharma Logo"
             className="h-12 w-12 object-cover rounded-full border border-gray-300 shadow-sm flex-shrink-0"
+            width="48"
+            height="48"
+            loading="eager"
           />
         </Link>
 
@@ -133,7 +136,7 @@ const Navbar = () => {
             <ThemeToggle />
             <Link
               to="/contact"
-              className="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              className="bg-blue-700 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-800 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
             >
               Get Quote
             </Link>

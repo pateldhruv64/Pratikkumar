@@ -1,5 +1,6 @@
 // server/controllers/adminController.js
 import Admin from "../models/adminModel.js";
+import Settings from "../models/Settings.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import fs from "fs";
@@ -10,7 +11,7 @@ export const registerAdmin = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    
+
 
     const existingAdmin = await Admin.findOne({ email });
     if (existingAdmin) {
@@ -76,34 +77,43 @@ export const getDashboardData = async (req, res) => {
   }
 };
 
-// ✅ POST: Upload Catalog PDF (Protected Route)
-// ✅ POST: Upload Catalog PDF (Protected Route)
+// ✅ POST: Upload Catalog PDF (Cloudinary + MongoDB Settings)
 export const uploadCatalogPdf = async (req, res) => {
   try {
-    
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });
     }
 
-    const fs = await import('fs');
-    const path = await import('path');
-    const uploadsDir = path.join(process.cwd(), "public", "assets");
+    // URL from Cloudinary (using 'raw' resource type)
+    const catalogUrl = req.file.path || req.file.secure_url;
 
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    // Save to Settings record (Create if not exists)
+    let settings = await Settings.findOne();
+    if (!settings) {
+      settings = new Settings({ catalogUrl });
+    } else {
+      settings.catalogUrl = catalogUrl;
     }
 
-    const destPath = path.join(uploadsDir, "catalog.pdf");
+    await settings.save();
 
-    fs.rename(req.file.path, destPath, (err) => {
-      if (err) {
-        console.error("❌ Error moving catalog:", err);
-        return res.status(500).json({ message: "Failed to save catalog" });
-      }
-      res.status(200).json({ message: "✅ Catalog uploaded successfully" });
+    res.status(200).json({
+      message: "🚀 Catalog successfully synced with Cloudinary",
+      url: catalogUrl
     });
   } catch (error) {
     console.error("❌ Error in uploadCatalogPdf:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error during cloud upload" });
+  }
+};
+
+// ✅ GET: Global Settings (Public)
+export const getSettings = async (req, res) => {
+  try {
+    const settings = await Settings.findOne();
+    res.status(200).json(settings || { catalogUrl: "" });
+  } catch (error) {
+    console.error("❌ Error in getSettings:", error);
+    res.status(500).json({ message: "Failed to load settings" });
   }
 };

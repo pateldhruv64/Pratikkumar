@@ -33,7 +33,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-800 py-10 px-4 sm:px-6 text-center rounded-xl shadow-md dark:shadow-none border border-transparent dark:border-gray-700 mt-12 max-w-3xl mx-auto transition-colors duration-300">
+    <div className="bg-gray-50 dark:bg-gray-800 py-10 px-4 sm:px-6 text-center rounded-xl shadow-md dark:shadow-none border border-transparent dark:border-gray-700 mt-12 max-w-3xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-blue-700 dark:text-blue-400">
         Subscribe to our Newsletter
       </h2>
@@ -48,6 +48,7 @@ const Newsletter = () => {
         <input
           type="email"
           placeholder="Enter your email"
+          aria-label="Email address for newsletter subscription"
           className="w-full sm:w-2/3 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -55,7 +56,7 @@ const Newsletter = () => {
         />
         <button
           type="submit"
-          className="w-full sm:w-auto bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          className="w-full sm:w-auto bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-800 transition"
         >
           Subscribe
         </button>
