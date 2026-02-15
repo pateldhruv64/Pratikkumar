@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
                     )}
 
                     <a
-                        href={`https://wa.me/919876543210?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
+                        href={`https://wa.me/916353159657?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Enquire about ${product.name} on WhatsApp`}
