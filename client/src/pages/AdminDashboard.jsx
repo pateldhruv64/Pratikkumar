@@ -105,7 +105,9 @@ const AdminDashboard = () => {
       alert('✅ Catalog PDF uploaded successfully!');
       setCatalogPdf(null);
     } catch (err) {
-      alert('❌ Failed to upload catalog PDF');
+      console.error('Catalog upload error:', err);
+      const errorMsg = err.response?.data?.message || err.response?.data?.error || 'Failed to upload catalog PDF';
+      alert(`❌ Error: ${errorMsg}`);
     }
   };
 

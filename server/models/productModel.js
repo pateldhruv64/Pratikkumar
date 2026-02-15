@@ -27,6 +27,10 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// ✅ Add indexes for faster search and filtering
+productSchema.index({ name: 1 });
+productSchema.index({ category: 1 });
+
 const Product = mongoose.model('Product', productSchema);
 
 export default Product;

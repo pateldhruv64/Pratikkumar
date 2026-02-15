@@ -49,6 +49,7 @@ const ProductCard = ({ product }) => {
                             }
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Download brochure for ${product.name}`}
                             className="flex-1 flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
                         >
                             <ExternalLink size={16} />
@@ -60,7 +61,8 @@ const ProductCard = ({ product }) => {
                         href={`https://wa.me/919876543210?text=Hello, I am interested in ${encodeURIComponent(product.name)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors shadow-md hover:shadow-lg text-sm font-medium"
+                        aria-label={`Enquire about ${product.name} on WhatsApp`}
+                        className="flex-1 flex items-center justify-center gap-2 bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors shadow-md hover:shadow-lg text-sm font-medium"
                     >
                         <MessageCircle size={16} />
                         Enquire

@@ -4,26 +4,29 @@ import {
   registerAdmin,
   loginAdmin,
   getDashboardData,
-  uploadCatalogPdf, // ✅ New controller
+  uploadCatalogPdf,
+  getSettings, // ✅ New
 } from '../controllers/adminController.js';
 
 import protect from '../middleware/protect.js';
-import upload from '../middleware/upload.js'; // ✅ For handling PDF upload
+import { catalogUpload } from '../middleware/upload.js'; // ✅ Use Cloudinary for catalog
+import upload from '../middleware/upload.js';
 
 const router = express.Router();
 
 // 🔓 Public Routes
 router.post('/register', registerAdmin);
 router.post('/login', loginAdmin);
+router.get('/settings', getSettings); // ✅ Publicly get catalog URL
 
 // 🔐 Protected Route
 router.get('/dashboard', protect, getDashboardData);
 
-// ✅ Upload Catalog PDF (Admin only)
+// ✅ Upload Catalog PDF (Admin only - Cloudinary storage)
 router.post(
   '/upload-catalog',
   protect,
-  upload.single('catalog'),
+  catalogUpload.single('catalog'),
   uploadCatalogPdf
 );
 
