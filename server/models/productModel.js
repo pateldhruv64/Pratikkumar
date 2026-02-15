@@ -15,9 +15,13 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Product image is required'],
     },
+    category: {
+      type: String,
+      default: '',
+    },
     brochure: {
       type: String,
-      default: '', // ✅ Added brochure field (optional)
+      default: '',
     },
   },
   { timestamps: true }

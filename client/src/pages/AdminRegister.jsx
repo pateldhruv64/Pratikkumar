@@ -4,7 +4,7 @@ import axios from "../services/axios";
 const AdminRegister = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("adminToken");
+    const token = sessionStorage.getItem("adminToken");
     if (token) {
       navigate("/admin/dashboard");
     }
@@ -14,7 +14,7 @@ const AdminRegister = () => {
     email: "",
     password: "",
   });
-  
+
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -38,14 +38,14 @@ const AdminRegister = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white shadow-md rounded px-8 py-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 transition-colors duration-300">
+      <div className="bg-white dark:bg-gray-800 shadow-md rounded px-8 py-6 w-full max-w-md transition-colors duration-300">
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600 dark:text-blue-400">
           Admin Register
         </h2>
 
-        {message && <p className="text-green-600 mb-4">{message}</p>}
-        {error && <p className="text-red-600 mb-4">{error}</p>}
+        {message && <p className="text-green-600 dark:text-green-400 mb-4">{message}</p>}
+        {error && <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
@@ -54,7 +54,7 @@ const AdminRegister = () => {
             placeholder="Username"
             value={formData.username}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-300"
             required
           />
           <input
@@ -63,7 +63,7 @@ const AdminRegister = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-300"
             required
           />
           <input
@@ -72,7 +72,7 @@ const AdminRegister = () => {
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-300"
             required
           />
           <button

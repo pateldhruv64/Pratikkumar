@@ -3,7 +3,7 @@ import Newsletter from "./Newsletter";
 // import { useLocation } from "react-router-dom";
 
 // import AdminDashboard from "../pages/AdminDashboard";
- 
+
 
 const Footer = () => {
 
@@ -11,10 +11,10 @@ const Footer = () => {
   // const isAdminDashboard = location.pathname === AdminDashboard;
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       {/* Newsletter Section */}
       <div className="px-4 sm:px-6 lg:px-8 pt-6">
-            <Newsletter /> 
+        <Newsletter />
 
 
       </div>
