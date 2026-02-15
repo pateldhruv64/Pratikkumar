@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
 import { Helmet } from "react-helmet-async";
 import banner from "../assets/banner.jpg";
 import axios from "../services/axios";
@@ -85,29 +86,7 @@ const Home = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {products.map((product) => (
-            <div
-              key={product._id}
-              className="bg-white dark:bg-gray-800 hover:shadow-2xl transition duration-300 rounded-2xl shadow-md p-5 border border-gray-100 dark:border-gray-700 flex flex-col items-center"
-            >
-              <Link to="/products" className="block w-full text-center">
-                <img
-                  src={
-                    product.image.startsWith("http")
-                      ? product.image
-                      : `${import.meta.env.VITE_API_URL}${product.image}`
-                  }
-                  alt={product.name}
-                  loading="lazy"
-                  className="w-full h-44 object-contain mb-4 transform hover:scale-105 transition bg-white rounded p-2"
-                />
-                <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">
-                  {product.name}
-                </h3>
-                <p className="text-sm text-gray-500 line-clamp-2">
-                  {product.description}
-                </p>
-              </Link>
-            </div>
+            <ProductCard key={product._id} product={product} />
           ))}
         </div>
 
