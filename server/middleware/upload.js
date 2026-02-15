@@ -60,7 +60,8 @@ const storage = new CloudinaryStorage({
     if (file.mimetype === "application/pdf") {
       return {
         folder: "products/brochures",
-        resource_type: "raw",
+        resource_type: "image",
+        format: "pdf",
       };
     }
 
